@@ -8,7 +8,7 @@ A modern e-commerce web application built with React and Redux, featuring produc
 
 ## Features
 
-- **Product Catalog** - Browse 100+ products with real-time API data
+- **Product Catalog** - Browse products with real-time API data
 - **Advanced Filtering** - Multi-filter support with category, price range, and search
 - **Smart Search** - Real-time product search across titles and categories
 - **Shopping Cart** - Add/remove items with quantity management and live price calculations
