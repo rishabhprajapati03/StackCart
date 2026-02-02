@@ -153,7 +153,10 @@ export type Order = {
 
 export type Review = {
   _id: string;
-  user: string; // user id (or populated later)
+  user: {
+    _id: string;
+    displayName: string;
+  }; // user id (or populated later)
   product: string; // product id
   rating: number; // 1–5
   comment?: string;

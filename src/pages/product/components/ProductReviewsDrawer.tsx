@@ -4,16 +4,23 @@ import ReviewsSection from "./reviews/ReviewsSection";
 type Props = {
   isDrawerOpen: boolean;
   setIsDrawerOpen: (val: boolean) => void;
+  productId: string;
 };
-const ProductReviewsDrawer = ({ isDrawerOpen, setIsDrawerOpen }: Props) => {
+
+const ProductReviewsDrawer = ({
+  isDrawerOpen,
+  setIsDrawerOpen,
+  productId,
+}: Props) => {
   return (
     <>
       {isDrawerOpen && (
         <BottomDrawer
           title="Reviews"
           closeDrawer={() => setIsDrawerOpen(false)}
-          children={<ReviewsSection />}
-        ></BottomDrawer>
+        >
+          <ReviewsSection productId={productId} />
+        </BottomDrawer>
       )}
     </>
   );

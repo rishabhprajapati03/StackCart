@@ -44,12 +44,15 @@ const ProductPage = () => {
     }
   }, [product]);
 
+  if (!product?._id) return <h2>Not find</h2>;
+
   return (
     <div className="relative bg-white">
       <ProductHeader />
       <ProductReviewsDrawer
         isDrawerOpen={isDrawerOpen}
         setIsDrawerOpen={setIsDrawerOpen}
+        productId={product._id}
       />
 
       {isLoading && <h2>Loading product details...</h2>}

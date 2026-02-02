@@ -88,7 +88,6 @@ const CartItemComponent = ({
               onClick={() => {
                 if (quantity < stock) {
                   onUpdateQuantity(quantity + 1);
-                  console.log(stock);
                 } else {
                   toast.error(`Only ${stock} items available in stock.`);
                 }

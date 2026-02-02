@@ -14,7 +14,6 @@ const SearchResultCard = ({
   title,
   price,
 }: SearchResultCardProps) => {
-  console.log(id);
   return (
     <Link
       to={`/product/${id}`}

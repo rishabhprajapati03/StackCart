@@ -1,4 +1,5 @@
 import { ChevronDown, Star } from "lucide-react";
+import { useGetProductReviewsQuery } from "../../../../store/api/reviewsApi";
 
 const RatingBar = ({
   stars,
@@ -49,38 +50,30 @@ const ReviewCard = ({ name, date, comment, rating }: any) => (
   </div>
 );
 
-const ReviewsSection = () => {
-  const ratingData = [
-    { stars: 5, percentage: 80 },
-    { stars: 4, percentage: 60 },
-    { stars: 3, percentage: 40 },
-    { stars: 2, percentage: 20 },
-    { stars: 1, percentage: 10 },
-  ];
+type Props = {
+  productId: string;
+};
 
-  const reviews = [
-    {
-      name: "Wade Warren",
-      date: "6 days ago",
-      rating: 5,
-      comment:
-        "The item is very good, my son likes it very much and plays every day.",
-    },
-    {
-      name: "Guy Hawkins",
-      date: "1 week ago",
-      rating: 4,
-      comment:
-        "The seller is very fast in sending packet, I just bought it and the item arrived in just 1 day!",
-    },
-    {
-      name: "Robert Fox",
-      date: "2 weeks ago",
-      rating: 4,
-      comment:
-        "I just bought it and the stuff is really good! I highly recommend it!",
-    },
-  ];
+const ReviewsSection = ({ productId }: Props) => {
+  const { data, isLoading, isError } = useGetProductReviewsQuery({ productId });
+
+  if (isLoading) return <p className="p-5">Loading reviews...</p>;
+  if (isError || !data) return <p className="p-5">Failed to load reviews</p>;
+
+  const { reviews, pagination } = data;
+
+  const averageRating2 =
+    reviews.reduce((acc, rev) => (acc = acc + rev.rating), 0) / reviews.length;
+  console.log(averageRating2);
+  const total = pagination.totalReviews;
+
+  const ratingData = [5, 4, 3, 2, 1].map((star) => {
+    const count = reviews.filter((r) => r.rating === star).length;
+    return {
+      stars: star,
+      percentage: total ? Math.round((count / total) * 100) : 0,
+    };
+  });
 
   return (
     <div className="bg-white pb-5">
@@ -91,20 +84,26 @@ const ReviewsSection = () => {
             className="text-[64px] font-semibold"
             style={{ lineHeight: "80%" }}
           >
-            4.0
+            {averageRating2 && averageRating2.toFixed(1)}
           </h1>
-          <div className="">
-            <div className="flex gap-1 ">
-              {[...Array(4)].map((_, i) => (
+
+          <div>
+            <div className="flex gap-1">
+              {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
                   size={22}
-                  className="fill-[#FFA928] text-[#FFA928]"
+                  className={
+                    i < Math.round(averageRating2)
+                      ? "fill-[#FFA928] text-[#FFA928]"
+                      : "text-gray-200"
+                  }
                 />
               ))}
-              <Star size={22} className="text-gray-200" />
             </div>
-            <p className="text-[#808080] mt-1">1034 Ratings</p>
+            <p className="text-[#808080] mt-1">
+              {pagination.totalReviews} Ratings
+            </p>
           </div>
         </div>
 
@@ -118,23 +117,30 @@ const ReviewsSection = () => {
           ))}
         </div>
       </div>
+
       <hr className="my-5 text-[#E6E6E6]" />
 
       {/* Reviews List */}
       <div className="flex items-center justify-between ">
-        <h3 className="text-xl font-bold">45 Reviews</h3>
+        <h3 className="text-xl font-bold">{pagination.totalReviews} Reviews</h3>
         <button className="flex items-center gap-1 text-sm font-medium text-[#808080]">
           Most Relevant <ChevronDown size={16} />
         </button>
       </div>
+
       <div>
-        {reviews.map((rev, i) => (
-          <>
-            <ReviewCard key={i} {...rev} />
-          </>
+        {reviews.map((rev) => (
+          <ReviewCard
+            key={rev._id}
+            name={rev.user.displayName}
+            rating={rev.rating}
+            comment={rev.comment}
+            date={new Date(rev.createdAt).toLocaleDateString()}
+          />
         ))}
       </div>
     </div>
   );
 };
+
 export default ReviewsSection;

@@ -29,7 +29,6 @@ const CartPage = () => {
   const [deleteCartItem, { isLoading: isDeleting }] =
     useDeleteCartItemMutation();
   const [clearCart, { isLoading: isClearingCart }] = useClearCartMutation();
-  console.log(cart);
   if (cartLoading) return <CartSkeleton />;
   if (cart?.items.length === 0) {
     return (
@@ -91,7 +90,6 @@ const CartPage = () => {
                 const stock =
                   sizes?.find((s) => s.size === item.size)?.stock ?? 0;
 
-                console.log(stock);
                 const itemKey = getItemKey(_id, item.size);
                 return (
                   <CartItemComponent
