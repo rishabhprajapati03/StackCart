@@ -2,7 +2,7 @@ import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { auth } from "../../services/authService";
 
 export const baseQueryWithAuth = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api",
+  baseUrl: "https://stackcartbackend-production.up.railway.app/api",
   prepareHeaders: async (headers) => {
     const user = auth.currentUser;
 
