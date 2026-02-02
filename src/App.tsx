@@ -28,7 +28,7 @@ import TrackOrderPage from "./pages/order/TrackOrderPage";
 import AddNewAddress from "./pages/order/AddNewAddress";
 import PublicOnlyRoute from "./components/common/PublicOnlyRoute";
 import { useEffect, useRef } from "react";
-import { useAppDispatch, useAppSelector } from "./hooks/redux";
+import { useAppDispatch } from "./hooks/redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./services/authService";
 import { clearUser, setUser } from "./store/slices/authSlice";
@@ -39,7 +39,6 @@ import EditAddressPage from "./pages/address/EditAddressPage";
 const App = () => {
   const hasBootstrappedRef = useRef(false);
   const dispatch = useAppDispatch();
-  const { isAuthenticated } = useAppSelector((s) => s.auth);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (!firebaseUser) {

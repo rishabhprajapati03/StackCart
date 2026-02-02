@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ArrowLeft, Bell, Plus } from "lucide-react";
+import { useState } from "react";
+import { Plus } from "lucide-react";
 import Button from "../../components/ui/Button";
 import { Link } from "react-router-dom";
 import AppHeader from "../../components/common/AppHeader";

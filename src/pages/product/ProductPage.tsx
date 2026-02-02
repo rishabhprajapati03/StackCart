@@ -15,6 +15,7 @@ const ProductPage = () => {
   const { id } = useParams();
   const { initialized, user } = useAppSelector((s) => s.auth);
   const [addToCart, { isLoading: isAddingToCart }] = useAddToCartMutation();
+  if (!id) return null;
   const {
     data: product,
     isLoading,
@@ -100,7 +101,8 @@ const ProductPage = () => {
                     }).unwrap();
                     toast.success(" Added To Cart");
                   } catch (err) {
-                    toast.error(err?.data?.message ?? "Failed to add in cart");
+                    console.log(err);
+                    toast.error("Failed to add in cart");
                   }
                 }}
               >

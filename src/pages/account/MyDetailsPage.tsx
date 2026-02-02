@@ -16,8 +16,8 @@ const MyDetailsPage = () => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<MyDetailsFormType>();
-  const onFormSubmit = (d) => {
-    console.log(d);
+  const onFormSubmit = () => {
+    console.log("FORM Submitted");
   };
   return (
     <div className="">

@@ -21,12 +21,7 @@ const CartPage = () => {
   const [removingItemKey, setRemovingItemKey] = useState<string | null>(null);
 
   const { initialized, user } = useAppSelector((s) => s.auth);
-  const {
-    data: cart,
-    isLoading: cartLoading,
-    error,
-    isError,
-  } = useGetCartQuery(undefined, {
+  const { data: cart, isLoading: cartLoading } = useGetCartQuery(undefined, {
     skip: !initialized || !user,
   });
   const [updateCartItemQuantity, { isLoading: isUpdatingCart }] =

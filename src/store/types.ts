@@ -4,9 +4,7 @@ import type {
   Order,
   PaymentMethod,
   Product,
-  ProductBase,
   Review,
-  Size,
   Wishlist,
 } from "../types";
 

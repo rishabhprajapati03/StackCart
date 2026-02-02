@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 import AppHeader from "../../components/common/AppHeader";
 import Button from "../../components/ui/Button";
-import CalculationSummary from "../Cart/Summary/CalculationSummary";
+import CalculationSummary from "../cart/Summary/CalculationSummary";
 
 import { useAppSelector } from "../../hooks/redux";
 import { useGetCartQuery } from "../../store/api/cartApi";
@@ -88,7 +88,7 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-white pb-[120px]">
+    <div className="relative min-h-screen bg-white pb-30">
       <AppHeader title="Checkout" showBack rightIcon="none" />
 
       <main className="p-5 space-y-8">

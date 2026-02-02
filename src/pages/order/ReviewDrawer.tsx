@@ -4,15 +4,10 @@ import toast from "react-hot-toast";
 
 import Button from "../../components/ui/Button";
 
-import {
-  useCreateReviewMutation,
-  useUpdateReviewMutation,
-} from "../../store/api/reviewsApi";
-
 import type { Review } from "../../types";
 
 type Props = {
-  existingReview?: Review;
+  existingReview?: Review | null;
   onSubmit: (rating: number, comment: string) => Promise<void>;
 };
 
@@ -40,7 +35,6 @@ const ReviewDrawerContent = ({ existingReview, onSubmit }: Props) => {
 
   return (
     <div className="space-y-5">
-      {/* UI unchanged */}
       <div>
         <h2 className="text-base font-semibold">How was your product?</h2>
         <p className="text-sm text-[#808080]">

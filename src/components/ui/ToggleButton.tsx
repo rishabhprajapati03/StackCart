@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface ToggleButtonProps {
   label?: string;
-  enabled?: boolean;
-  onChange?: (val: boolean) => void;
 }
 
-const ToggleButton = ({ label, enabled, onChange }: ToggleButtonProps) => {
+const ToggleButton = ({ label }: ToggleButtonProps) => {
   const [isEnabled, setIsEnabled] = useState<boolean>(false);
   return (
     <label className="flex items-center justify-between w-full cursor-pointer group">

@@ -12,7 +12,7 @@ import {
 import Button from "../../components/ui/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { useAppDispatch } from "../../hooks/redux";
 import { clearUser } from "../../store/slices/authSlice";
 import { logout } from "../../services/authService";
 import { showDestructiveAlert } from "../../components/ui/Alerts";

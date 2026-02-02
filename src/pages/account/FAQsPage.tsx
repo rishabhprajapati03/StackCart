@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Mic, Search, ChevronDown, ChevronUp } from "lucide-react";
 import InputTwo from "../../components/ui/InputTwo";
 

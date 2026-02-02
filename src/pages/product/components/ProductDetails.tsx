@@ -3,7 +3,7 @@ import { Heart, Star } from "lucide-react";
 
 type Props = {
   data: Product;
-  selectedSize: Size;
+  selectedSize?: Size;
   setSelectedSize: (val: Size) => void;
   setIsDrawerOpen: (val: boolean) => void;
 };

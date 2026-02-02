@@ -1,5 +1,3 @@
-import { ArrowLeft, Bell } from "lucide-react";
-import React from "react";
 import AppHeader from "../../../components/common/AppHeader";
 
 const ProductHeader = () => {

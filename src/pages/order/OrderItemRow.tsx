@@ -21,6 +21,7 @@ type Props = {
   status: OrderStatus;
 };
 const OrderItemRow = ({ orderId, item, status }: Props) => {
+  console.log(orderId);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [locallyDeleted, setLocallyDeleted] = useState(false);
 
@@ -107,7 +108,6 @@ const OrderItemRow = ({ orderId, item, status }: Props) => {
           closeDrawer={() => setDrawerOpen(false)}
         >
           <ReviewDrawerContent
-            productId={item.product}
             existingReview={review}
             onSubmit={async (rating, comment) => {
               if (hasReviewed) {

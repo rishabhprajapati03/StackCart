@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { ArrowLeft, Bell, HelpCircle } from "lucide-react";
+import { useState } from "react";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import AppHeader from "../../components/common/AppHeader";

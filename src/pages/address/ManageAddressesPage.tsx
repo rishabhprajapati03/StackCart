@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-
-import AppHeader from "../../components/common/AppHeader";
 import Button from "../../components/ui/Button";
 import AddressCard from "./components/AddressCard";
 
